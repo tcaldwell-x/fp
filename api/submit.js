@@ -1,16 +1,22 @@
 const fetch = require('node-fetch');
 
 module.exports = async (req, res) => {
+
+  console.log('Received request')
+
   res.setHeader('Access-Control-Allow-Origin', '*'); // Allow from any origin; restrict if needed
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   if (req.method === 'OPTIONS') {
+    console.log('Received request options')
+
     res.status(200).end();
     return;
   }
 
   if (req.method === 'POST') {
+    console.log('Received request post')
     try {
       const params = new URLSearchParams();
       for (const [key, value] of Object.entries(req.body)) {
